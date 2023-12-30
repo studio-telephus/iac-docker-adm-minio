@@ -8,8 +8,7 @@ echo "Install the base tools"
 
 apt-get update
 apt-get install -y \
- curl vim wget htop unzip gnupg2 lsb-release socat \
- bash-completion software-properties-common
+ curl vim htop bash-completion
 
 echo "Download the MinIO server’s latest .deb package"
 curl -Lo minio.deb https://dl.min.io/server/minio/release/linux-amd64/minio_20231223071911.0.0_amd64.deb
