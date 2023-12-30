@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+: "${MINIO_ROOT_USER?}"
 : "${MINIO_ROOT_PASSWORD?}"
 : "${SERVER_KEY_PASSPHRASE?}"
 
@@ -24,16 +25,16 @@ openssl rsa \
   -passin "pass:$SERVER_KEY_PASSPHRASE"
 
 echo "Create a system group that the MinIO server will run"
-groupadd -r minio-user
-useradd -M -r -g minio-user minio-user
+groupadd -r minio-group
+useradd -M -r -g minio-group ${MINIO_ROOT_USER}
 
 mkdir /mnt/data
-chown minio-user:minio-user /mnt/data
+chown ${MINIO_ROOT_USER}:minio-group /mnt/data
 
 #cat << EOF > /etc/default/minio
 #MINIO_VOLUMES="/mnt/data"
 #MINIO_OPTS="--certs-dir /etc/minio/certs --console-address :9001"
-#MINIO_ROOT_USER=minioadmin
+#MINIO_ROOT_USER=${MINIO_ROOT_USER}
 #MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
 #EOF
 
