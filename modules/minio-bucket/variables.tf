@@ -12,6 +12,11 @@ variable "provider_password" {
   sensitive = true
 }
 
+variable "provider_ssl" {
+  type = bool
+  default = false
+}
+
 variable "bucket_name" {
   type = string
 }

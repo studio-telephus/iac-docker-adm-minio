@@ -30,6 +30,7 @@ module "minio_bucket_tfstate_adm" {
   provider_server   = "https://${var.container_ipv4_address}:9000"
   provider_user     = var.minio_root_user
   provider_password = var.minio_root_password
+  provider_ssl      = true
   bucket_name       = "tfstate-adm"
   user_name         = var.minio_terraform_sa_username
   user_secret       = var.minio_terraform_sa_secret
