@@ -34,5 +34,6 @@ module "minio_bucket_tfstate_adm" {
   bucket_name       = "tfstate-adm"
   user_name         = var.minio_terraform_sa_username
   user_secret       = var.minio_terraform_sa_secret
+  depends_on        = [module.container_adm_minio]
 }
 

@@ -13,7 +13,7 @@ variable "provider_password" {
 }
 
 variable "provider_ssl" {
-  type = bool
+  type    = bool
   default = false
 }
 
