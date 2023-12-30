@@ -27,7 +27,7 @@ module "container_adm_minio" {
 
 module "minio_bucket_tfstate_adm" {
   source            = "./modules/minio-bucket"
-  provider_server   = "https://${var.container_ipv4_address}:9000"
+  provider_server   = "${var.container_ipv4_address}:9000"
   provider_user     = var.minio_root_user
   provider_password = var.minio_root_password
   provider_ssl      = true
