@@ -18,8 +18,8 @@ echo "Set up a minio command and a systemd startup script"
 dpkg -i minio.deb
 
 echo "Create a system group that the MinIO server will run"
-groupadd -r ${MINIO_ROOT_USER}
-useradd -M -r -g ${MINIO_ROOT_USER} ${MINIO_ROOT_USER}
+groupadd -r minio-user
+useradd -M -r -g minio-user minio-user
 
 
 mkdir -p /etc/minio/certs
@@ -28,10 +28,10 @@ openssl rsa \
   -in /etc/ssl/private/server-encrypted.key \
   -out /etc/minio/certs/private.key \
   -passin "pass:$SERVER_KEY_PASSPHRASE"
-chown -R ${MINIO_ROOT_USER}:${MINIO_ROOT_USER} /etc/minio/certs/
+chown -R minio-user:minio-user /etc/minio/certs/
 
 mkdir /mnt/data
-chown ${MINIO_ROOT_USER}:${MINIO_ROOT_USER} /mnt/data
+chown minio-user:minio-user /mnt/data
 
 
 cat << EOF > /etc/default/minio
@@ -40,7 +40,6 @@ MINIO_OPTS="--certs-dir /etc/minio/certs --console-address :9001"
 MINIO_ROOT_USER=${MINIO_ROOT_USER}
 MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
 EOF
-
 
 systemctl start minio
 systemctl enable minio
