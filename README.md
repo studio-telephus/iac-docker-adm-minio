@@ -1,5 +1,15 @@
 # iac-lxd-adm-minio
 
+(Optional) Expose port for public access (Spacelift)
+
+    iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 49345 -j DNAT --to-destination 10.0.10.109:9000
+
+## Create Spacelift context sa-minio-adm
+
+    MINIO_ENDPOINT=https://telephus.k-space.ee:49345
+    MINIO_ACCESS_KEY=
+    MINIO_SECRET_KEY=
+    
 ## Helpers
 
     openssl s_client -showcerts -connect localhost:9000 </dev/null
