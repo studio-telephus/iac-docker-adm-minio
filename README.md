@@ -1,14 +1,17 @@
 # iac-lxd-adm-minio
 
-(Optional) Expose port for public access (Spacelift)
+(Optional) Expose minio buckets for public access (Spacelift)
 
-    iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 49345 -j DNAT --to-destination 10.0.10.109:9000
+    <LocationMatch ^/bucket-(.*)$>
+        ProxyPass https://10.0.10.109:9000/bucket-$1
+        ProxyPassReverse https://10.0.10.109:9000/bucket-$1
+    </LocationMatch>
+    
+(Optional) Create Spacelift context sa-minio-adm
 
-## Create Spacelift context sa-minio-adm
-
-    MINIO_ENDPOINT=https://telephus.k-space.ee:49345
-    MINIO_ACCESS_KEY=
-    MINIO_SECRET_KEY=
+    MINIO_ENDPOINT=https://telephus.k-space.ee/minio
+    MINIO_ACCESS_KEY=changeit
+    MINIO_SECRET_KEY=changeit
     
 ## Helpers
 
