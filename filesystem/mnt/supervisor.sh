@@ -6,5 +6,5 @@ cat <<EOF > /etc/supervisor/conf.d/supervisord.conf
 nodaemon=true
 
 [program:named]
-command=minio server
+command=minio server /mnt/data --console-address ":9001"
 EOF
