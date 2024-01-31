@@ -23,8 +23,8 @@ chown -R minio-user:minio-user /etc/minio/certs/
 mkdir /mnt/data
 chown minio-user:minio-user /mnt/data
 
-echo "Create Minio default config file."
-cat << EOF > /etc/default/minio
-MINIO_VOLUMES="/mnt/data"
-MINIO_OPTS="--certs-dir /etc/minio/certs --console-address :9001"
-EOF
+#echo "Create Minio default config file."
+#cat << EOF > /etc/default/minio
+#MINIO_VOLUMES="/mnt/data"
+#MINIO_OPTS="--certs-dir /etc/minio/certs --console-address :9001"
+#EOF
