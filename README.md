@@ -1,4 +1,4 @@
-# iac-lxd-adm-minio
+# iac-docker-adm-minio
 
 (Optional) Expose minio buckets for public access (Spacelift)
 

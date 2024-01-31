@@ -1,10 +1,13 @@
 terraform {
-  # local state file must be used for the first run
   backend "s3" {}
   required_providers {
-    lxd = {
-      source  = "terraform-lxd/lxd"
-      version = "~> 1.10"
+    bitwarden = {
+      source  = "maxlaverse/bitwarden"
+      version = "~> 0.7"
+    }
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~> 3.0"
     }
   }
 }
