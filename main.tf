@@ -3,7 +3,7 @@ locals {
   container_name    = "container-adm-minio"
 }
 
-resource "docker_image" "nameserver" {
+resource "docker_image" "minio" {
   name         = local.docker_image_name
   keep_locally = false
   build {
@@ -17,7 +17,7 @@ resource "docker_image" "nameserver" {
 module "container_adm_minio" {
   source = "github.com/studio-telephus/terraform-docker-container.git?ref=1.0.1"
   name   = local.container_name
-  image  = docker_image.nameserver.image_id
+  image  = docker_image.minio.image_id
   networks_advanced = [
     {
       name         = "adm-docker"

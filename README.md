@@ -3,8 +3,8 @@
 (Optional) Expose minio buckets for public access (Spacelift)
 
     <LocationMatch ^/bucket-(.*)$>
-        ProxyPass https://10.0.10.109:9000/bucket-$1
-        ProxyPassReverse https://10.0.10.109:9000/bucket-$1
+        ProxyPass https://10.10.0.109:9000/bucket-$1
+        ProxyPassReverse https://10.10.0.109:9000/bucket-$1
     </LocationMatch>
     
 (Optional) Create Spacelift context sa-minio-adm
@@ -16,7 +16,7 @@
 ## Helpers
 
     openssl s_client -showcerts -connect localhost:9000 </dev/null
-    openssl s_client -showcerts -connect minio.adm.acme.corp:9000 </dev/null
+    openssl s_client -showcerts -connect minio.docker.adm.acme.corp:9000 </dev/null
     
     journalctl -u minio
     grep minio /var/log/syslog
