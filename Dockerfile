@@ -11,6 +11,6 @@ RUN bash /mnt/pre-install.sh
 RUN bash /mnt/install.sh
 RUN bash /mnt/supervisor.sh
 
-EXPOSE 9000 9001
+EXPOSE 22 9000 9001
 
 CMD ["/usr/bin/supervisord"]

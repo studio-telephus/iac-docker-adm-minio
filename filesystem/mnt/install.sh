@@ -2,7 +2,7 @@
 : "${SERVER_KEY_PASSPHRASE?}"
 
 echo "Download the MinIO server’s latest .deb package"
-curl -Lo /tmp/minio.deb https://dl.min.io/server/minio/release/linux-amd64/minio_20240129035632.0.0_amd64.deb
+curl -Lo /tmp/minio.deb https://dl.min.io/server/minio/release/linux-amd64/minio.deb
 
 echo "Set up a minio command and a systemd startup script"
 dpkg -i /tmp/minio.deb
