@@ -9,7 +9,7 @@ resource "docker_image" "minio" {
   build {
     context = path.module
     build_args = {
-      SERVER_KEY_PASSPHRASE = module.bw_minio_key_passphrase.data.password
+      _SERVER_KEY_PASSPHRASE = module.bw_minio_key_passphrase.data.password
     }
   }
 }
