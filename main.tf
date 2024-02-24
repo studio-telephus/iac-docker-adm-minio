@@ -24,7 +24,7 @@ resource "docker_volume" "minio_data" {
 }
 
 module "container_minio" {
-  source   = "github.com/studio-telephus/terraform-docker-container.git?ref=1.0.2"
+  source   = "github.com/studio-telephus/terraform-docker-container.git?ref=1.0.3"
   name     = local.container_name
   hostname = local.container_name
   image    = docker_image.minio.image_id
