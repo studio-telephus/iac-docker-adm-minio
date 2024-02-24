@@ -38,11 +38,11 @@ module "container_minio" {
     MINIO_ROOT_USER     = module.bw_minio_root.data.username
     MINIO_ROOT_PASSWORD = module.bw_minio_root.data.password
   }
-  mounts = [
+  volumes = [
     {
-      target = "/mnt/data"
-      source = docker_volume.minio_data.name
-      type   = "volume"
+      volume_name    = docker_volume.minio_data.name
+      container_path = "/mnt/data"
+      read_only      = false
     }
   ]
   command = ["supervisord"]
