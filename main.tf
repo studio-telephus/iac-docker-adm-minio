@@ -12,6 +12,11 @@ resource "docker_image" "minio" {
       _SERVER_KEY_PASSPHRASE = module.bw_minio_key_passphrase.data.password
     }
   }
+  triggers = {
+    dir_sha1 = sha1(join("", [
+      filesha1("${path.module}/Dockerfile")
+    ]))
+  }
 }
 
 resource "docker_volume" "minio_data" {
@@ -40,5 +45,5 @@ module "container_minio" {
       type   = "volume"
     }
   ]
-  command        = ["supervisord"]
+  command = ["supervisord"]
 }
